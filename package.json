@@ -1,0 +1,25 @@
+{
+  "name": "nodeexam",
+  "version": "1.0.0",
+  "description": "nodejsexam",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "nodeJs"
+  ],
+  "author": "TDK",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongodb": "^4.12.1",
+    "socket.io": "^4.5.4"
+  },
+
+  "nodemonConfig": {
+    "ext": "js, mjs, json, html"
+  }
+}
