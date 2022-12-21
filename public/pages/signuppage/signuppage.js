@@ -2,7 +2,7 @@ const signinButton = document.getElementById("btn-signup-id").addEventListener("
 
 async function signup() {
     console.log("signupbutton fungere")
-    await fetch("http://localhost:8080/signuppage", {
+    const response = await fetch("http://localhost:8080/signuppage", {
         method: "POST",
         body: JSON.stringify({
             name: document.getElementById("name").value,
@@ -14,7 +14,13 @@ async function signup() {
             "Accept": "application/json",
             //"Access-Control-Allow-Origin": "*"
         },
-    })
-    //location.replace("/signinpage")
+    }).then(res => res.json()) // her starter responset
+    console.log("Data send")
+
+    if(response.success) {
+    window.location.replace("/signinpage")
+    } else {
+        window.location.replace("/signuppage") // set notification
+    }
 }  
 

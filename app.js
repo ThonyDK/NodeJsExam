@@ -9,7 +9,7 @@ app.use(express.static("public"))
 const server = http.createServer(app);
 const io = new Server(server);
 
-//app.use(express.urlencoded())  
+//app.use(express.urlencoded( {extended: true} )) 
 app.use(express.json())  
 
 

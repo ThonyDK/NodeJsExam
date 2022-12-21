@@ -5,6 +5,7 @@ const router = Router();
 import { checkIfUserExists, findUserByEmail } from "../../signup_service.js" 
 
 import { renderPage } from "../../util/templateEngine.js";
+ 
 
 const signinPage = renderPage("/signinpage/signinpage.html",
 {

@@ -10,7 +10,7 @@ const productPage = renderPage("/productpage/productpage.html",
     //cssLink: `<link rel="stylesheet" href="/pages/frontpage/frontpage.css">`
 });
 
-router.get("/api/productpage", (req,res) => {
+router.get("/productpage", (req,res) => {
     res.send(productPage); 
 })
 

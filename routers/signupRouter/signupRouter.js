@@ -25,13 +25,19 @@ router.post("/signuppage", async (req,res) => {
     if((await checkIfUserExists(req.body.email)) === false) { // Hvis over i checkIfUserExists er false vil det sige at den er false her også og en user kan indsættes i DB.
         webshopDB.users.insertOne(req.body) // Bruger oprettes.
         console.log("User created")
-        res.redirect("/signinpage") 
-        //console.log({data: users})
+        res.send({ success: true })
+        //console.log({data: users}) 
     } else {
         console.log("User already exists") // hvis den er den til gengæld er true så findes brugeren allerede og kan derfor ikke oprettes. 
         //res.send("User already exists") // Denne skal udkommenteres og du skal benytte res.send(signinPage) længere nede i stedet til din frontend.  
-        res.redirect("/signuppage"); 
+        res.send({ success: false });  
     } 
 })
 
 export default router; 
+
+/*
+const obj = "{ success: true }"
+obj.success
+console.log(obj)
+*/
