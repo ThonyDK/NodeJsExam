@@ -9,13 +9,16 @@ app.use(express.static("public"))
 const server = http.createServer(app);
 const io = new Server(server);
 
-
-//app.use(express.urlencoded( {extended: true} )) 
+// This is used to get nodemailer to work because we need to get som data over the web that has to be shown in the mailbox
+app.use(express.urlencoded( {extended: true} )) 
+//
 app.use(express.json())
 
+// Muligvis slet denne sektion 
 import cookieParser from "express";
-app.use(cookieParser())
+app.use(cookieParser()) 
 
+// Middleware to use session to forfill the stateless situation between server and client. 
 import session from "express-session";
 app.use(session(
     {
@@ -23,6 +26,9 @@ app.use(session(
     name: 'Test',
     resave: false,
     saveUninitialized: true,
+    cookie: { 
+        expires: 900000,
+      }
     })) 
 
 
@@ -47,7 +53,7 @@ app.use(logoutRouter);
 
 
 import { renderPage } from "./util/templateEngine.js"; 
-import toastr from "toastr";
+//import toastr from "toastr";
 // Render frontpage 
 const frontPage = renderPage("/frontpage/frontpage.html",
 {
@@ -60,7 +66,7 @@ app.get("/", (req,res) => {
 })
 
 
-// Socket connection
+// Socket connection to make a chat on every person that are on the webpage 
 io.on('connection', (socket) => {
     console.log(`A socket connected on id ${socket.id}`);
     socket.on('chat message', msg => {
@@ -70,27 +76,7 @@ io.on('connection', (socket) => {
         console.log('user disconnected');
       });
   });
-/*
-io.on("connection", (socket) => {
-    console.log(`A socket connected on id ${socket.id}`);
-
-    socket.on("client choose a color", (data) => {
-
-        // emits a broadcast to all sockets but itself
-        socket.broadcast.emit("this is the new color", data);
-
-        // emits only to the socket itself
-        socket.emit("this is the new color", data);
-
-        // emits to all sockets in the io namespace
-        io.emit("this is the new color", data);
-    });
-
-    io.on("disconnect", () => {
-        console.log(`Socket ${socket.id} left.`);
-    });
-});*/
-
+// Using port 8080 and if that port is not available then use another port thats available
 const PORT = process.env.PORT || 8080;
-
+// Which port is beeing used 
 server.listen(PORT, () => console.log("server is running on ", PORT)); 

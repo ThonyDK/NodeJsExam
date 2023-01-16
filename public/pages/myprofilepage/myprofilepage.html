@@ -3,7 +3,8 @@
 <table class="table">
     <thead>
       <tr>
-        <th scope="col">Name/email</th>
+        <th scope="col">Name</th>
+        <th scope="col">email</th>
       </tr>
     </thead>
     <tbody id="user-output">
@@ -20,15 +21,15 @@
             }) 
             .then(userData => { 
                 console.log(userData) //giver user data i konsol
-                Object.keys(userData).forEach(user => {
                     const markupProfile = `
                     <tr>
-                        <td>${userData[user]}</td>
+                        <td>${userData.name}</td>
+                        <td>${userData.email}</td>
                     </tr>  
                     `;
                     document.querySelector("#user-output").insertAdjacentHTML('Beforeend', markupProfile);
                 }); 
-        })
+        
     }    
 fetchUserData()
 </script>

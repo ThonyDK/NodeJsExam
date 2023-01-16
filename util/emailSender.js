@@ -9,20 +9,21 @@ export async function sendMail(name, email, textBody) {
   // Nedenfor er til at benytte en fake mail til at teste mail funktionen
   // Først gå til denne hjemmeside og tryk på Create Ethereal Account: https://ethereal.email/ 
   // Så bruger sætter du hele const transport fra nodemailer siden ind https://ethereal.email/create 
-  // Open mailbox for at se hvilke mails du har fået fra Pokemon contact. 
+  // Open mailbox for at se hvilke mails du har fået fra contact siden. 
   const transporter = nodemailer.createTransport({
     host: 'smtp.ethereal.email',
     port: 587,
     auth: {
-        user: 'isaias.smitham51@ethereal.email',
-        pass: '2cGkD4ndgkKWwe8p43'
+        user: 'maximo.kertzmann93@ethereal.email',
+        pass: 'N4NsgKFgKS69k25NUX'
     }
 });
 
   // send mail med defineret transport objekter
   let info = await transporter.sendMail({
+    name: name,
     from: email, // sender address
-    to: "isaias.smitham51@ethereal.email", // list of receivers
+    to: "Tenniswebshop@mail.com", // list of receivers
     subject: "Message from " + name, // Subject line
     text: textBody, // plain text body
     html: `<b>${textBody}</b>`, // html body

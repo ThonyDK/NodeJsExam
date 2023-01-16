@@ -17,7 +17,10 @@ async function signin() {
     console.log("Data send")
 
     if(response.success) {
-        window.location.replace("/") 
+        toastr.success("Login complete!")
+        setTimeout(function(){
+            window.location.replace("/myprofilepage")
+        },1500); 
     } else {
         window.location.replace("/signinpage") // set notification
     } 

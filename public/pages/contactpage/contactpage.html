@@ -1,6 +1,6 @@
 <h3>Welcome to contact page</h3> 
 
-<form action="/api/contact" method="POST">
+<form action="/contactpage" method="POST">
     <label for="name">Name: </label>
     <br>
     <input id="name" name="name: " placeholder="Name">
@@ -14,5 +14,15 @@
     <textarea placeholder="Type message" name="message" cols="30" rows="15" ></textarea>
     <br>
     <br>
-    <button type="submit">Submit Feedback</button>
+    <button type="submit" id="btn-send-message-id">Submit Feedback id</button>
 </form>
+
+<script>
+const sendMessageButton = document.getElementById("btn-send-message-id").addEventListener("click", sendMessage);
+
+async function sendMessage() { 
+    console.log("Send messages button fungere")
+    //logoutButton.preventDefault()
+    toastr.success("Messages has ben send!") 
+} 
+</script>

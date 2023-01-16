@@ -18,7 +18,10 @@
                         </tr>
                     </thead>
                     <tbody id="data-output">
-                        <a class="btn btn-block btn-danger text-uppercase" id="btn-delete-prostaffraquet-id">Delete item</a>
+                        <a class="btn btn-block btn-danger text-uppercase" id="btn-delete-all-items-id">Delete all cart</a>
+                    </tbody>
+                    <tbody id="data2-output">
+                        
                     </tbody>
                 </table>
             </div>
@@ -36,18 +39,12 @@
     </div>
 </div>
 
-<!-- <script src="../pages/productpage/raquetspage/addprostaffraquet.js" type="module"></script>  -->
 
 <script src="../pages/cartpage/cartpage.js"></script>
 
-
-<!-- <script src="../../../routers/cartRouter/cartRouter.js"></script> -->
- 
+<!-- Wilson prostaff raquet data and delete button where delete button dont work --> 
 <script>
-
-//addToCart()
-
-function data(){
+function raquetData(){
     fetch("/get-raquet-data")
         .then(res => {
             return res.json();
@@ -58,27 +55,90 @@ function data(){
                 const markupRaquet = `
                 <tr>
                     <td>${item.product}</td>
-                    <td>${item.price}<span style="margin-right: 400px"></span><a class="btn btn-block btn-danger text-uppercase" id="btn-delete-prostaffraquet-id">Delete item</a></td>
+                    <td>${item.price}<span style="margin-right: 400px"></span><!--<a class="btn btn-block btn-danger text-uppercase" id="btn-delete-prostaffraquet-id">Delete item</a>--></td>
                 </tr>  
                 `;
                 document.querySelector("#data-output").insertAdjacentHTML('Beforeend', markupRaquet);
+            });    
+    })
+}
+
+raquetData()  
+
+// Kode jeg arbejder på
+// ONLY TO DELETE WILSON PROSTAFF RAQUET IN CART
+/*
+const deleteRaquetInCartButton = document.getElementById("btn-delete-wilson-prostaff-raquet-id").addEventListener("click", deleteRaquetInCart);
+function deleteRaquetInCart() { 
+    console.log("Delete raquet button fungere")
+    const response = fetch("/delete-wilson-prostaff-in-cart")
+    .then(res => {
+        return res.json();
+    })
+    .then(dataRes => {
+                const markupR = `
+                <tr>
+                    <td></td>
+                    <td>$<span style="margin-right: 400px"></span><a class="btn btn-block btn-danger text-uppercase" id="btn-delete-prostaffraquet-id">Delete item</a></td>
+                </tr>  
+                `;
+                document.querySelector("#data-output").insertAdjacentHTML('Beforeend', markupR);
+            })     
+    .then(window.location.replace("/cartpage"))   
+}*/
+</script>
+
+
+
+<!-- Script to delete all items in cart--> 
+<script>
+const deleteAllItemsInCartButton = document.getElementById("btn-delete-all-items-id").addEventListener("click", deleteAllItems);
+function deleteAllItems() {
+    console.log("Delete button fungere")
+    //event.preventDefualt()
+    const response = fetch("/delete-all-items-in-cart", {
+        method: 'Delete'
+    })
+    .then(window.location.replace("/cartpage"))
+    
+}
+</script>
+
+
+
+<!-- Blade bag data and delete button where delete button dont work --> 
+<script>
+    function bladeBagData(){
+    fetch("/get-bladeBag-data") 
+        .then(res => {
+            return res.json();
+        }) 
+        .then(dataresponse => {
+            //console.log(dataresponse) 
+            dataresponse.forEach(item => {
+                const markupRaquet = `
+                <tr>
+                    <td>${item.product}</td>
+                    <td>${item.price}<span style="margin-right: 400px"></span><!--<a class="btn btn-block btn-danger text-uppercase" id="btn-delete-prostaffraquet-id">Delete item</a>--></td>
+                </tr>  
+                `;
+                document.querySelector("#data2-output").insertAdjacentHTML('Beforeend', markupRaquet);
             });   
     })
 }
 
-data()
+bladeBagData()
 
-const deleteRaquetButton = document.getElementById("btn-delete-prostaffraquet-id").addEventListener("click", deleteRaquet);
-function deleteRaquet() {
-    console.log("Delete button fungere")
-    //event.preventDefualt()
-    fetch("/delete-raquet-session")
-    .then(res => {
-        return res.json(); 
+// Kode jeg arbejder på 
+// ONLY TO DELETE BAG IN CART
+/* 
+const deleteBagInCartButton = document.getElementById("btn-delete-all-items-id").addEventListener("click", deleteBagInCart);
+function deleteBagInCart() {
+    console.log("Delete bag button fungere")
+    const response = fetch("/delete-all-items-in-cart", {
+        method: 'Delete'
     })
-}
-
-deleteRaquet()
-
+    .then(window.location.replace("/cartpage"))   
+}*/
 
 </script>

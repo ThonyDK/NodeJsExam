@@ -1,4 +1,5 @@
-//const addToCart = document.getElementById("btn-add-prostaff-id").addEventListener("click", addToCart); 
+/*
+const addToCart = document.getElementById("btn-add-prostaff-id").addEventListener("click", addToCart); 
 
 function addToCart() {
     console.log("add prostaffbutton fungere")
