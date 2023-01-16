@@ -12,15 +12,13 @@ async function signup() {
         headers: {
             "Content-type": "application/json",
             "Accept": "application/json",
-            //"Access-Control-Allow-Origin": "*"
         },
     }).then(res => res.json()) // her starter responset
     console.log("Data send") // i res.Json burde der gerne stå objektet {success: true eller false}
-    //const response2 = {success: true}
     if(response.success) {
         window.location.replace("/signinpage")
     } else {
-        window.location.replace("/signuppage") // set notification
+        window.location.replace("/signuppage")
     }
 }  
 

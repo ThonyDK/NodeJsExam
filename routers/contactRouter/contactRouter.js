@@ -9,13 +9,11 @@ import { renderPage } from "../../util/templateEngine.js";
 const contactPage = renderPage("/contactpage/contactpage.html",
 {
     tabTitle: "Nodejs contactpage",
-    //cssLink: `<link rel="stylesheet" href="/pages/frontpage/frontpage.css">`
 });
 
 const frontPage = renderPage("/frontpage/frontpage.html",
 {
     tabTitle: "Nodejs contactpage",
-    //cssLink: `<link rel="stylesheet" href="/pages/frontpage/frontpage.css">`
 });
 
 router.get("/contactpage", (req,res) => {
@@ -28,7 +26,7 @@ router.post("/contactpage", (req, res) => {
     let email = req.body.email;
     let textBody = req.body.message;
     sendMail(name, email, textBody)
-    .then(result => res.send(frontPage/*`<a href="${result}" target="_blank">Generated email</a><br><a href="/">Home</a>`*/))
+    .then(result => res.send(frontPage))
     .catch(console.error) 
 })
 

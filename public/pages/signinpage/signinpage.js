@@ -11,7 +11,6 @@ async function signin() {
         headers: {
             "Content-type": "application/json",
             "Accept": "application/json",
-            //"Access-Control-Allow-Origin": "*"
         },
     }).then(res => res.json()) // her starter responset
     console.log("Data send")

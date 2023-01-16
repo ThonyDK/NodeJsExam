@@ -7,7 +7,6 @@ import { renderPage } from "../../util/templateEngine.js";
 const chatPage = renderPage("/chatpage/chatpage.html",
 {
     tabTitle: "Nodejs chatpage",
-    //cssLink: `<link rel="stylesheet" href="/pages/frontpage/frontpage.css">`
 });
 
 router.get("/chatpage", (req,res) => {

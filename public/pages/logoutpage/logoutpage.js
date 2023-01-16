@@ -10,7 +10,5 @@ async function logout() {
         toastr.success("Logout complete!")
         setTimeout(function(){
             window.location.replace("/")
-        },2000);
-
-        
+        },2000);   
 } 

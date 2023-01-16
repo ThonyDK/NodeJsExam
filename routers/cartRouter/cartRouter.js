@@ -4,14 +4,9 @@ const router = Router();
 
 import { renderPage } from "../../util/templateEngine.js";
 
-import webshopDB from "../../database/connection.js"; 
-import session from "express-session";
-
-
 const cartPage = renderPage("/cartpage/cartpage.html",
 {
     tabTitle: "Nodejs cartpage",
-    //cssLink: `<link rel="stylesheet" href="/pages/frontpage/frontpage.css">`
 });
 
 router.get("/cartpage", (req,res) => {
@@ -31,10 +26,6 @@ router.delete("/delete-wilson-prostaff-in-cart", async (req, res) => {
     wilsonRaquetSession == undefined
     console.log(wilsonRaquetSession)
     res.send(wilsonRaquetSession)
-    /*
-    if(req.session == undefined){
-        res.send({ success: true }) 
-    }*/
 })
 
 // session blade bag data gemt 
