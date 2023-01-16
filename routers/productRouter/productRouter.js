@@ -10,31 +10,26 @@ import { renderPage } from "../../util/templateEngine.js";
 const productPage = renderPage("/productpage/productpage.html",
 {
     tabTitle: "Nodejs productpage",
-    //cssLink: `<link rel="stylesheet" href="/pages/frontpage/frontpage.css">`
 });
 // Render raquetspage
 const raquetsPage = renderPage("/productpage/raquetspage/raquetspage.html",
 {
     tabTitle: "Raquetspage",
-    //cssLink: `<link rel="stylesheet" href="/pages/frontpage/frontpage.css">`
 });
 // Render bagspage
 const bagsPage = renderPage("/productpage/bladebagpage/bagspage.html",
 {
     tabTitle: "Bagspage",
-    //cssLink: `<link rel="stylesheet" href="/pages/frontpage/frontpage.css">`
 });
 // Render shoespage
 const shoesPage = renderPage("/productpage/shoespage.html",
 {
     tabTitle: "Bagspage",
-    //cssLink: `<link rel="stylesheet" href="/pages/frontpage/frontpage.css">`
 });
 // Render ballpage
 const ballsPage = renderPage("/productpage/ballspage.html",
 {
     tabTitle: "Ballspage",
-    //cssLink: `<link rel="stylesheet" href="/pages/frontpage/frontpage.css">`
 });
 
 // Get productpage
@@ -84,11 +79,11 @@ router.delete("/delete-bag-session", async (req, res) => {
         res.send({ success: true }) 
     }
 })
-
+// Route til shoespage
 router.get("/shoespage", (req,res) => {
     res.send(shoesPage); 
 })
-
+// Route til ballspage
 router.get("/ballspage", (req,res) => {
     res.send(ballsPage);  
 })

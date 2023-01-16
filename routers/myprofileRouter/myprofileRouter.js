@@ -1,24 +1,19 @@
 import { Router } from "express";
-import session from "express-session";
+
 // instantiere router
 const router = Router();
-
-import webshopDB from "../../database/connection.js"
-
-import { checkIfUserExists, findUserByEmail } from "../../signup_service.js" 
+ 
 
 import { renderPage } from "../../util/templateEngine.js";
 
 const myProfilePage = renderPage("/myprofilepage/myprofilepage.html",
 {
     tabTitle: "Nodejs myprofilepage",
-    //cssLink: `<link rel="stylesheet" href="/pages/frontpage/frontpage.css">`
 });
 
 const frontPage = renderPage("/frontpage/frontpage.html",
 {
     tabTitle: "Nodejs frontpage",
-    //cssLink: `<link rel="stylesheet" href="/pages/frontpage/frontpage.css">`
 });
 
 // Get myprofilepage

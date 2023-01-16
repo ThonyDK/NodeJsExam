@@ -1,8 +1,7 @@
 import { Router } from "express";
 // instantiere router
 const router = Router();
-//importing database
-import webshopDB from "../../database/connection.js";
+
 // Importere bcrypt til at hashe users kode
 import bcrypt from "bcrypt";
 
@@ -15,7 +14,6 @@ import { renderPage } from "../../util/templateEngine.js";
 const signinPage = renderPage("/signinpage/signinpage.html",
 {
     tabTitle: "Nodejs Signinpage",
-    //cssLink: `<link rel="stylesheet" href="/pages/frontpage/frontpage.css">`
 });
 
 router.get("/signinpage", (req,res) => {

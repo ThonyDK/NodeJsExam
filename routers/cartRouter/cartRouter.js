@@ -18,7 +18,7 @@ router.get("/cartpage", (req,res) => {
     res.send(cartPage); 
 })
 
-// session gemt 
+// session raquet data gemt 
 router.get("/get-raquet-data", (req, res) => {
     const sendSession = req.session.addRaquetToCart
     console.log(req.session.addRaquetToCart) 
@@ -37,7 +37,7 @@ router.delete("/delete-wilson-prostaff-in-cart", async (req, res) => {
     }*/
 })
 
-// session gemt 
+// session blade bag data gemt 
 router.get("/get-bladeBag-data", (req, res) => {
     const sendBladeBagSession = req.session.addBladeBagToCart
     console.log(req.session.addBladeBagToCart)  

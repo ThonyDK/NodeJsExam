@@ -43,11 +43,11 @@
 <script src="../pages/cartpage/cartpage.js"></script>
 
 <!-- Wilson prostaff raquet data and delete button where delete button dont work --> 
-<script>
+<script>    
 function raquetData(){
-    fetch("/get-raquet-data")
+    fetch("/get-raquet-data") // Dataen fetches fra endpointet der har en session med raquet data. 
         .then(res => {
-            return res.json();
+            return res.json(); 
         }) 
         .then(dataresponse => {
             //console.log(dataresponse) 
@@ -63,7 +63,7 @@ function raquetData(){
     })
 }
 
-raquetData()  
+raquetData() // Kalder på sessionens data per automatik  
 
 // Kode jeg arbejder på
 // ONLY TO DELETE WILSON PROSTAFF RAQUET IN CART

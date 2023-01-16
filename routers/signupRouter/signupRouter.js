@@ -36,11 +36,3 @@ router.post("/signuppage", async (req,res) => {
 })
 
 export default router; 
-
-// Nedenfor er obj keyen og "{ success: true }" er value som i dette tilfælde er en string.
-// Hvis succes: true ikke er sat som string så er obj variablenavn og inde i den er et objekt der har en key=succes og en value der er true. { success: true } 
-/*
-const obj = "{ success: true }"
-obj.success
-console.log(obj) udskriver true i console
-*/
