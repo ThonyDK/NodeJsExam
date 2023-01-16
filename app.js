@@ -9,15 +9,28 @@ app.use(express.static("public"))
 const server = http.createServer(app);
 const io = new Server(server);
 
+
 //app.use(express.urlencoded( {extended: true} )) 
-app.use(express.json())  
+app.use(express.json())
+
+import cookieParser from "express";
+app.use(cookieParser())
+
+import session from "express-session";
+app.use(session(
+    {
+    secret: 'keyboard cat',
+    name: 'Test',
+    resave: false,
+    saveUninitialized: true,
+    })) 
 
 
 // Import routers
 import contactRouter from "./routers/contactRouter/contactRouter.js"; 
 app.use(contactRouter); 
-import cardRouter from "./routers/cardRouter/cardRouter.js"; 
-app.use(cardRouter); 
+import cartRouter from "./routers/cartRouter/cartRouter.js"; 
+app.use(cartRouter); 
 import chatRouter from "./routers/chatRouter/chatRouter.js";  
 app.use(chatRouter);
 import productRouter from "./routers/productRouter/productRouter.js";
@@ -28,10 +41,13 @@ import signinRouter from "./routers/signinRouter/signinRouter.js";
 app.use(signinRouter); 
 import signupRouter from "./routers/signupRouter/signupRouter.js"; 
 app.use(signupRouter); 
+import logoutRouter from "./routers/logoutRouter/logoutRouter.js"
+app.use(logoutRouter);
 
 
 
 import { renderPage } from "./util/templateEngine.js"; 
+import toastr from "toastr";
 // Render frontpage 
 const frontPage = renderPage("/frontpage/frontpage.html",
 {
@@ -45,6 +61,16 @@ app.get("/", (req,res) => {
 
 
 // Socket connection
+io.on('connection', (socket) => {
+    console.log(`A socket connected on id ${socket.id}`);
+    socket.on('chat message', msg => {
+      io.emit('chat message', msg);
+    });
+    socket.on('disconnect', () => {
+        console.log('user disconnected');
+      });
+  });
+/*
 io.on("connection", (socket) => {
     console.log(`A socket connected on id ${socket.id}`);
 
@@ -63,7 +89,7 @@ io.on("connection", (socket) => {
     io.on("disconnect", () => {
         console.log(`Socket ${socket.id} left.`);
     });
-});
+});*/
 
 const PORT = process.env.PORT || 8080;
 

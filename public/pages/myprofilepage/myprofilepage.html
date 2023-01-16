@@ -1,1 +1,34 @@
 <h3>Welcome to my profile</h3>
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Name/email</th>
+      </tr>
+    </thead>
+    <tbody id="user-output">
+      
+      
+    </tbody>
+</table>
+
+<script>
+    function fetchUserData() {
+        fetch("/myprofiledata") // Afventer til at denne akt. er gennemført. Derefter nedenfor kommer responset som sendt fra backend
+            .then(res => { 
+                return res.json()
+            }) 
+            .then(userData => { 
+                console.log(userData) //giver user data i konsol
+                Object.keys(userData).forEach(user => {
+                    const markupProfile = `
+                    <tr>
+                        <td>${userData[user]}</td>
+                    </tr>  
+                    `;
+                    document.querySelector("#user-output").insertAdjacentHTML('Beforeend', markupProfile);
+                }); 
+        })
+    }    
+fetchUserData()
+</script>

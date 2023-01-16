@@ -1,0 +1,84 @@
+
+<section class="jumbotron text-center">
+    <div class="container">
+        <h1 class="jumbotron-heading">CART</h1>
+     </div>
+</section>
+
+<div class="container mb-4">
+    <div class="row">
+        <div class="col-12">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <!-- <th scope="col"> </th> -->
+                            <th scope="col">Product</th>
+                            <th scope="col" class="text-right">Price</th>
+                        </tr>
+                    </thead>
+                    <tbody id="data-output">
+                        <a class="btn btn-block btn-danger text-uppercase" id="btn-delete-prostaffraquet-id">Delete item</a>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col mb-2">
+            <div class="row">
+                <div class="col-sm-12  col-md-6">
+                    <a class="btn btn-block btn-light" href="/productpage">Continue Shopping</a>
+                </div>
+                <div class="col-sm-12 col-md-6 text-right">
+                    <button class="btn btn-lg btn-block btn-success text-uppercase">Checkout</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- <script src="../pages/productpage/raquetspage/addprostaffraquet.js" type="module"></script>  -->
+
+<script src="../pages/cartpage/cartpage.js"></script>
+
+
+<!-- <script src="../../../routers/cartRouter/cartRouter.js"></script> -->
+ 
+<script>
+
+//addToCart()
+
+function data(){
+    fetch("/get-raquet-data")
+        .then(res => {
+            return res.json();
+        }) 
+        .then(dataresponse => {
+            //console.log(dataresponse) 
+            dataresponse.forEach(item => {
+                const markupRaquet = `
+                <tr>
+                    <td>${item.product}</td>
+                    <td>${item.price}<span style="margin-right: 400px"></span><a class="btn btn-block btn-danger text-uppercase" id="btn-delete-prostaffraquet-id">Delete item</a></td>
+                </tr>  
+                `;
+                document.querySelector("#data-output").insertAdjacentHTML('Beforeend', markupRaquet);
+            });   
+    })
+}
+
+data()
+
+const deleteRaquetButton = document.getElementById("btn-delete-prostaffraquet-id").addEventListener("click", deleteRaquet);
+function deleteRaquet() {
+    console.log("Delete button fungere")
+    //event.preventDefualt()
+    fetch("/delete-raquet-session")
+    .then(res => {
+        return res.json(); 
+    })
+}
+
+deleteRaquet()
+
+
+</script>

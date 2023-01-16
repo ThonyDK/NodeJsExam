@@ -13,9 +13,10 @@ export async function checkIfUserExists(email) {
     }
 }
 
-export function findUserByEmail(email) {
-  if(checkIfUserExists(users, email)) {
-    return users.find(user => user.email === email)
+export async function findUserByEmail(email) {
+  if(await checkIfUserExists(email)) {
+    const userEmail = await webshopDB.users.find({"email": email}).toArray() 
+    return userEmail[0];
   } else {
     console.log("User doens't exist")
   }
